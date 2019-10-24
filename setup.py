@@ -12,7 +12,6 @@ def to_list(buffer): return list(filter(None, map(str.strip, buffer.splitlines()
 
 requirements = to_list("""
     click
-    shutil
 """)
 
 setup(
