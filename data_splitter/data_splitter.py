@@ -10,8 +10,8 @@ from .utils import split_array
 
 @click.command()
 @click.argument('folder')
-@click.option('--val' , default=20, help="Percentage of files for validation set")
-@click.option('--test', default=20, help="Percentage of files for test set")
+@click.option('--val' , default=0.2, help="Percentage of files for validation set")
+@click.option('--test', default=0.2, help="Percentage of files for test set")
 def data_splitter(folder, val, test):
   entries = [item for item in listdir(folder) if not item.startswith('.')]
 
