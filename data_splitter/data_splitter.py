@@ -1,9 +1,9 @@
-from os import listdir, mkdir, rmdir
+from os import listdir, mkdir
 from os.path import isfile, isdir, join
 import sys
 import random
 
-import shutil
+from shutil import move, rmtree
 import click
 
 @click.command()
@@ -41,12 +41,12 @@ def data_splitter(folder, train):
     test_entries = items[train_sel:]
 
     for train_file in train_entries:
-      shutil.move(join(folder, directory, train_file), join(folder, 'train', directory, train_file))
+      move(join(folder, directory, train_file), join(folder, 'train', directory, train_file))
     for test_file in test_entries:
-      shutil.move(join(folder, directory, test_file), join(folder, 'test', directory, test_file))
+      move(join(folder, directory, test_file), join(folder, 'test', directory, test_file))
 
     if directory != "":
-      rmdir(join(folder, directory))
+      rmtree(join(folder, directory))
 
 
 if __name__ == '__main__':
